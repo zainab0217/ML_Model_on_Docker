@@ -1,25 +1,15 @@
 import pandas
 from sklearn.linear_model import LinearRegression
-import pyfiglet
-import warnings
-warnings.simplefilter(action="ignore",category=FutureWarning)
+import numpy
+marks = [60,20,70,80,10]
+hours = [6,2,7,8,1]
 
-text = pyfiglet.figlet_format("LinearRegression Model", font="digital")
-
-print(text)
- 
-dataset = pandas.read_csv("mark.csv")
-
-y = dataset["marks"]
-
-x = dataset["hrs"].values.reshape(5,1)
- 
-
+marks = numpy.array(marks)
+hours = numpy.array(hours)
+hours = hours.reshape(-1,1)
+jack_hours = [[4]]
 mind = LinearRegression()
+mind.fit(hours,marks)
+jack_marks = mind.predict(jack_hours)
+mind.predict([[5]])
 
-mind.fit(x,y)
-#print(mind.predict([[ 4 ]]))
-
-hours = input("enter the number of hours you study ")
-result = mind.predict([[ hours ]])
-print(" your result is nearly equal to = " , result)
